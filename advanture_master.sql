@@ -225,7 +225,8 @@ select
 from daily_revenue
 order by OrderDate
 
-
+---master query for python automation
+	
 select 
 soh.SalesOrderID,
 soh.OrderDate,soh.CustomerID,soh.TerritoryID,soh.SalesPersonID
@@ -244,13 +245,17 @@ join [Production].[ProductSubcategory] as psc
 on p.ProductSubcategoryID=psc.ProductSubcategoryID
 join [Production].[ProductCategory] as pc 
 on psc.ProductCategoryID=pc.ProductCategoryID
-
+ 
+	
+	(--check if join dropped silently...
 select count(*) from Sales.SalesOrderDetail;  -- raw row count
-
+  --vs
 select count(*) 
 from [Sales].[SalesOrderHeader] as soh 
 join [Sales].[SalesTerritory] as t on soh.TerritoryID = t.TerritoryID
 join [Sales].[SalesOrderDetail] as sod on soh.SalesOrderID = sod.SalesOrderID
 join [Production].[Product] as p on sod.ProductID = p.ProductID
 join [Production].[ProductSubcategory] as psc on p.ProductSubcategoryID = psc.ProductSubcategoryID
-join [Production].[ProductCategory] as pc on psc.ProductCategoryID = pc.ProductCategoryID
+join [Production].[ProductCategory] as pc on psc.ProductCategoryID = pc.ProductCategoryID)
+--as a result: both return 121317 rows mean nothing noticeable
+
