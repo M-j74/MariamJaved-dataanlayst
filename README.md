@@ -1,4 +1,4 @@
-# MY WHOLE EXPERIENCE LOOKED HERE:
+# i'm Mariam Javed:
 # About Me
 
 Hi, I'm **Mariam Javed** — a Data Analyst with the ability to transform raw, unstructured data into meaningful insights and actionable decisions.  
