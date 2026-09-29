@@ -1,0 +1,41 @@
+E-Commerce Customer Analytics: SQL → Python → Power BI
+
+An end-to-end data analysis project on the UCI Online Retail dataset (541K+ transactions, Dec 2010–Dec 2011, UK-based online retailer). Covers data cleaning, business analysis, customer segmentation, and an interactive dashboard — using SQL, Python, and Power BI at the stage each tool fits best.
+
+ Project Overview
+
+| Stage | Tool | What it covers |
+|---|---|---|
+| Data querying & business analysis | SQL (T-SQL) | Aggregation, window functions, RFM scoring, cohort analysis, self-joins |
+| Cleaning, modeling & visualization | Python (pandas, matplotlib/seaborn, scikit-learn) | Data cleaning, RFM table, K-Means customer segmentation |
+| Interactive dashboard | Power BI | Data model, DAX measures, cross-filtered visuals |
+
+ Key Business Questions Answered
+- What's the overall revenue trend, and which months/products/countries drive the business?
+- Who are the most valuable customers, and how do we score/rank them (RFM)?
+- How well does the business retain customers over time (cohort retention)?
+- Can customers be segmented into meaningful groups (Champions, Loyal, At Risk, Lost) using clustering instead of hand-picked rules?
+- Which products are frequently bought together?
+
+
+
+Highlights & Real Bugs Caught Along the Way
+A few genuine debugging moments worth calling out — this project wasn't just following a checklist, it involved catching and fixing real issues:
+- SQL:an unintentional cross-join (missing join condition) that was silently comparing every product against every other product instead of matching them correctly
+- SQL: an inverted `NTILE` scoring direction in the RFM query — best customers were initially getting the worst scores
+- Python: an `ABS()` vs. net revenue distinction that was inflating revenue by treating returns as additional sales
+- Power BI: a broken table relationship caused by a date/timestamp mismatch between the fact table and the calendar table, and separately, an inactive relationship silently returning the same total for every month
+
+Customer Segments (from K-Means clustering on RFM)
+| Segment | Recency | Frequency | Monetary | Description |
+|---|---|---|---|---|
+| Champions | Very recent | Very high | Very high | Best customers — retain and reward |
+| Loyal | Recent | High | High | Strong repeat buyers |
+| Occasional | Recent | Low | Low-moderate | Active but infrequent |
+| Lost/Hibernating | Long inactive | Very low | Low | Re-engagement campaigns needed |
+
+ Tools Used
+SQL Server (T-SQL) • Python (pandas, matplotlib, seaborn, scikit-learn) • Power BI Desktop (Power Query, DAX)
+
+ Dataset
+[UCI Online Retail Dataset](https://archive.ics.uci.edu/dataset/352/online+retail) — transactional data from a UK-based online retailer.
